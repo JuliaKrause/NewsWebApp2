@@ -14,9 +14,13 @@ import java.util.List;
 public class NewsManaged {
     @Inject
     private NewsService newsService;
+	private List<News> newsList;
 
     public List<News> getAllNews() {
-        return newsService.getAllNews();
+		if (newsList == null) {
+			newsList = newsService.getAllNews();
+		}
+        return newsList;
     }
 
 }

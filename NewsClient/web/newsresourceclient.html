@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(refresh);
+        function refresh(){
+            $.ajax({
+                url: "http://localhost:8080/NewsWebApp2/resources/news",
+                type: "GET",
+                dataType: "json",
+                success: function (newsList) {
+                    var html = "";
+                    newsList.forEach(function (news) {
+                        html += "<li><a href = 'http://localhost:8080/NewsWebApp2/resources/news'" +
+                                        news.newsId + "'>" + news.title + "</a></li>";
+                    });
+                    html = "<ul>" + html + "</ul>";
+                    document.getElementById("content").innerHTML = html;
+                    <!--was ist newsList? ein Array von JavaScript-Objekten-->
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<form>
+    <input type="button" value="Refresh" onClick="refresh();">
+</form>
+<div id="content"></div>
+</body>
+</html>

@@ -1,16 +1,17 @@
 package at.technikumwien;
 
-import org.jboss.logging.Logger;
-
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.jws.WebService;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
+
+import javax.interceptor.Interceptors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+
+
+import org.jboss.logging.Logger;
 
 /**
  * Created by Julia on 21.10.2016.
@@ -18,17 +19,16 @@ import java.util.List;
 @Stateless
 
 public class NewsService {
-    private final Logger logger = Logger.getLogger(NewsService.class);
+    private static final Logger LOGGER = Logger.getLogger(NewsService.class);
 
     @PersistenceContext
     private EntityManager em;
 
+    @Interceptors(NewsFilterInterceptor.class)
     public List<News> getAllNews() {
-        logger.info("getAllNews() called");
-        List<News> newsList;
-        newsList = em.createNamedQuery("News.selectAll", News.class).getResultList();
-        logger.debug(newsList.size() + " news found");
-        return newsList;
+        LOGGER.info("getAllNews() called");
+        return em.createNamedQuery("News.selectAll", News.class)
+			.getResultList();
     }
 
 }
