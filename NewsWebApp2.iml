@@ -45,5 +45,14 @@
     </orderEntry>
     <orderEntry type="library" name="Jersey-2.2" level="project" />
     <orderEntry type="library" name="javax.transaction-api-1.2" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.faces-2.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

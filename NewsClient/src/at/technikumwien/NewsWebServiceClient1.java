@@ -1,12 +1,13 @@
 package at.technikumwien;
+import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
-import java.net.URL;
 
 /**
  * Created by Julia on 31.10.2016.
  */
 //Methode 1, braucht Interface aus NewsWebApp
+
 public class NewsWebServiceClient1 {
     public static void main (String [] args) throws Exception {
         //ausserdem muss man den BuildPath ändern

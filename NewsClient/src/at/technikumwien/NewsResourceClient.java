@@ -23,7 +23,7 @@ public class NewsResourceClient {
 
         WebTarget target = ClientBuilder
                 .newClient()
-                .target("http://localhost:8080/NewsWebApp2/resources/news");
+                .target("http://localhost:8080/NewsWebApp2_war_exploded/resources/news");
 
         News news = target.path("/{newsId}")
                 .resolveTemplate("newsId", 1)
